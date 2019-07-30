@@ -6,7 +6,6 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import Person from '@material-ui/icons/Person'
 import Home from '@material-ui/icons/Home'
 import Info from '@material-ui/icons/Info'
 import ViewList from '@material-ui/icons/ViewList'
@@ -17,8 +16,9 @@ const useStyles = makeStyles({
   list: {
     width: 250
   },
-  buttonColor: {
-    color: 'rgb(255, 255, 255)'
+  vertButton: {
+    color: 'rgb(255, 255, 255)',
+    minWidth: '48px'
   }
 })
 
@@ -36,13 +36,13 @@ export default function Header () {
     let icon
     switch (index) {
     case 0:
-      icon = <Person />
-      break
-    case 1:
       icon = <Home />
       break
-    case 2:
+    case 1:
       icon = <Info />
+      break
+    case 2:
+      icon = <ViewList />
       break
     case 3:
       icon = <ViewList />
@@ -51,9 +51,6 @@ export default function Header () {
       icon = <ViewList />
       break
     case 5:
-      icon = <ViewList />
-      break
-    case 6:
       icon = <ContactMail />
     }
     return icon
@@ -69,7 +66,7 @@ export default function Header () {
       onKeyDown={toggleSwipeableDrawer(side, false)}
     >
       <List>
-        {['Merritt Blanks', 'Home', 'About', 'Front-end Skills', 'Back-end Skills', 'Portfolio', 'Contact'].map((text, index) => (
+        {['Home', 'About', 'Front-end Skills', 'Back-end Skills', 'Portfolio', 'Contact'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>{iconIndex(index)}</ListItemIcon>
             <ListItemText primary={text} />
@@ -81,8 +78,8 @@ export default function Header () {
 
   return (
     <div>
-      <Button onClick={toggleSwipeableDrawer('right', true)}>
-        <MoreVert className={classes.buttonColor}/>
+      <Button className={classes.vertButton} onClick={toggleSwipeableDrawer('right', true)}>
+        <MoreVert />
       </Button>
       <SwipeableDrawer
         disableBackdropTransition={!iOS}

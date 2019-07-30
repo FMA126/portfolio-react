@@ -3,7 +3,7 @@ import './App.scss'
 import { Route } from 'react-router-dom'
 
 import ButtonAppBar from './header/ButtonAppBar'
-// import Home from './home/components/Home'
+import Home from './home/Home'
 import { SnackbarProvider } from 'notistack'
 
 class App extends Component {
@@ -27,11 +27,9 @@ class App extends Component {
         <ButtonAppBar />
         <main className="container">
           <Route path='/' render={() => (
-            <div>
-              <h1>hi</h1>
-              <span className="mdi mdi-github-circle"></span>
-            </div>
+            <Home />
           )} />
+          <p>This is supposed to be underneath the h1 tag</p>
         </main>
       </SnackbarProvider>
     )
